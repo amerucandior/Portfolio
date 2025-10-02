@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Web developer in Kenya specialising in Django, Node.js, and Next.js. I help businesses build fast, scalable websites and deliver projects with strong project management expertise."
+    />
+    <title>Ian Mwirigi - Portfolio!</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <style>
+      /* General styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        overflow-x: hidden;
+        background-color: #f8f9fa; /* Light background for contrast */
+        color: #343a40; /* Darker text for readability */
+      }
+
+      /* Gradient background */
+      .gradient-background {
+        height: 100vh;
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          #fde68a 0%,
+          #1e3a8a 50%,
+          #f59e0b 100%
+        );
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease-in-out infinite;
+        overflow: hidden;
+        color: white; /* Default text color on gradient */
+      }
+
+      /* Keyframe animations */
+      @keyframes gradientBG {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* Content container */
+      .content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Vertically center the content as a whole */
+        align-items: center; /* Horizontally center the button */
+        height: 100vh;
+        padding: 2rem;
+      }
+
+      .hero-text-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; /* Vertically align h1 and h2 */
+        width: 100%;
+        position: absolute; /* Position it within the .content container */
+        top: 2rem;
+        left: 0;
+        padding: 0 4rem; /* Add more padding to the sides */
+      }
+
+      .hero-left h1 {
+        font-size: clamp(3rem, 8vw, 5rem);
+        font-weight: 800;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        letter-spacing: -0.02em;
+        text-align: left;
+      }
+
+      .hero-right h2 {
+        font-size: clamp(1rem, 4vw, 1.5rem);
+        font-weight: 400;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        text-align: right;
+      }
+
+      /* Button is centered by .content flex properties */
+      button {
+        padding: 15px 35px;
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+        border: 2px solid white;
+        border-radius: 50px;
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        cursor: pointer;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      button:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      }
+
+      /* Particles */
+      .particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 5;
+      }
+
+      .particle {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        animation: particleFloat 15s ease-in-out infinite;
+      }
+
+      /* Particle definitions */
+      .particle:nth-child(1) {
+        width: 4px;
+        height: 4px;
+        top: 20%;
+        left: 10%;
+        animation-delay: 0s;
+        animation-duration: 12s;
+      }
+      .particle:nth-child(2) {
+        width: 6px;
+        height: 6px;
+        top: 60%;
+        left: 80%;
+        animation-delay: 2s;
+        animation-duration: 18s;
+      }
+      .particle:nth-child(3) {
+        width: 3px;
+        height: 3px;
+        top: 40%;
+        left: 60%;
+        animation-delay: 4s;
+        animation-duration: 14s;
+      }
+      .particle:nth-child(4) {
+        width: 5px;
+        height: 5px;
+        top: 80%;
+        left: 20%;
+        animation-delay: 6s;
+        animation-duration: 16s;
+      }
+      .particle:nth-child(5) {
+        width: 4px;
+        height: 4px;
+        top: 30%;
+        left: 90%;
+        animation-delay: 8s;
+        animation-duration: 20s;
+      }
+      .particle:nth-child(6) {
+        width: 7px;
+        height: 7px;
+        top: 70%;
+        left: 40%;
+        animation-delay: 10s;
+        animation-duration: 13s;
+      }
+      /* About Section */
+      .about-section {
+        min-height: 100vh;
+        background: linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%);
+        padding: 80px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .about-container {
+        max-width: 900px;
+        margin: 60px 40px 0 40px;
+        background: white;
+        border-radius: 24px;
+        padding: 60px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .about-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+      }
+
+      .about-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 2rem;
+        position: relative;
+      }
+
+      .about-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        border-radius: 2px;
+      }
+
+      .about-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #4a5568;
+        margin-bottom: 2rem;
+      }
+
+      .intro-line {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 1.5rem;
+      }
+
+      .highlight {
+        color: #667eea;
+        font-weight: 600;
+      }
+      @keyframes particleFloat {
+        0%,
+        100% {
+          transform: translateY(0) translateX(0);
+          opacity: 0.4;
+        }
+        50% {
+          transform: translateY(-50px) translateX(20px);
+          opacity: 0.8;
+        }
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 3rem;
+        font-weight: 700;
+        color: #2d3748;
+        margin-top: 5rem;
+        margin-bottom: 3rem;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        border-radius: 2px;
+      }
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .content {
+          justify-content: center;
+        }
+
+        .hero-text-container {
+          position: static; /* Remove absolute positioning for mobile */
+          flex-direction: column;
+          align-items: center;
+          padding: 0 1rem;
+          margin-bottom: 3rem; /* Space between text and button */
+        }
+
+        .hero-left h1,
+        .hero-right h2 {
+          text-align: center; /* Center text on mobile */
+        }
+
+        .hero-left h1 {
+          font-size: 3rem;
+          margin-bottom: 1rem;
+        }
+
+        .hero-right h2 {
+          font-size: 1.2rem;
+        }
+
+        button {
+          padding: 12px 28px;
+          border-radius: 20%;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+          .about-container {
+            margin: 20px;
+            padding: 40px 30px;
+          }
+        }
+      }
+
+      /* Mondrian Art */
+      .grid-container {
+        width: 460px;
+        background: #000;
+        box-sizing: border-box;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr) 20px;
+        grid-auto-rows: 80px;
+        gap: 10px;
+        background: #000;
+        padding: 10px;
+      }
+      .block {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 1px;
+      }
+      .white {
+        background: #f0f1ec;
+      }
+      .red {
+        background: #e72f24;
+      }
+      .blue {
+        background: #004592;
+      }
+      .yellow {
+        background: #f9d01e;
+      }
+      .a {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+      }
+      .b {
+        grid-column: 1;
+        grid-row: 3 / span 2;
+      }
+      .c {
+        grid-column: 2 / span 3;
+        grid-row: 1 / span 4;
+      }
+      .d {
+        grid-column: 1;
+        grid-row: 5;
+      }
+      .e {
+        grid-column: 4;
+        grid-row: 5;
+      }
+      .f {
+        grid-column: 2 / span 2;
+        grid-row: 5;
+      }
+      .g {
+        grid-column: 4;
+        grid-row: 5;
+      }
+
+      .chess-container {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+        width: 300px; /* fixed size, adjust as needed */
+        height: 280px;
+        border: 2px solid #333;
+      }
+
+      .white {
+        background-color: #f0d9b5;
+      }
+
+      .black {
+        background-color: #b58863;
+      }
+
+      .flag-container {
+        position: relative;
+        width: 300px;
+        height: 200px;
+        border: 2px solid #333;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      #black {
+        height: 60px;
+        width: 300px;
+        background-color: #000000;
+      }
+
+      #white {
+        height: 10px;
+        width: 300px;
+        background-color: #ffffff;
+      }
+
+      #red {
+        height: 60px;
+        width: 300px;
+        background-color: #ce1126;
+      }
+
+      #white2 {
+        height: 10px;
+        width: 300px;
+        background-color: #ffffff;
+      }
+
+      #green {
+        height: 60px;
+        width: 300px;
+        background-color: #007a3d;
+      }
+
+      .text-justify {
+        text-align: justify !important;
+        text-justify: inter-word;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- hero-section -->
+    <section class="gradient-background hero-section">
+      <div class="content">
+        <div class="hero-text-container">
+          <div class="hero-left">
+            <h1>Ian<br />Mwirigi</h1>
+          </div>
+          <div class="hero-right">
+            <h2>Project Manager <br />Web Developer & Designer</h2>
+          </div>
+        </div>
+        <a
+          href="https://www.linkedin.com/in/ian-mwirigi-27939821a/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary btn-lg"
+        >
+          Let's Work Together
+        </a>
+      </div>
+      <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+    </section>
+    <!-- About me Section-->
+    <section class="about-section">
+      <div class="about-container">
+        <h2 class="about-title">About Me</h2>
+        <p class="intro-line">
+          Hello, I'm <span class="highlight">Ian Mwirigi</span> — a project
+          manager, web developer and tech entrepreneur based in Kenya.
+        </p>
+        <p>
+          I combine technology expertise with strategic business thinking to
+          create
+          <span class="highlight">value-driven digital solutions</span> for
+          individuals and businesses. My approach goes beyond just writing code
+          — I focus on delivering results that align with your goals while
+          ensuring projects are executed efficiently and strategically.
+        </p>
+      </div>
+    </section>
+    <!--Portfolio-->
+    <section class="portfolio">
+      <div class="container">
+        <h2 class="section-title">My Portfolio</h2>
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">
+              Mondrian-Inspired Art
+            </h2>
+            <p class="lead text-justify">
+              <span class="highlight"
+                >What if Mondrian had CSS at his fingertips?</span
+              >
+              <br />
+              How would he compose the web? Bold geometric forms, primary colors
+              in perfect harmony, and the eternal dance between structure and
+              creativity converge to create digital art that transforms screens
+              into galleries of pure visual poetry.
+            </p>
+          </div>
+          <div class="col-md-5">
+            <div class="grid-container">
+              <div class="grid">
+                <div class="block a white"></div>
+                <div class="block b white"></div>
+                <div class="block c red"></div>
+                <div class="block d blue"></div>
+                <div class="block e white"></div>
+                <div class="block f white"></div>
+                <div class="block g yellow"></div>
+              </div>
+            </div>
+            <title>Placeholder</title>
+            <rect
+              width="100%"
+              height="100%"
+              fill="var(--bs-secondary-bg)"
+              data-darkreader-inline-fill=""
+              style="
+                --darkreader-inline-fill: var(
+                  --darkreader-bg--bs-secondary-bg,
+                  var(--darkreader-background-ffffff, #181a1b)
+                );
+              "
+            ></rect>
+          </div>
+
+          <hr class="featurette-divider m-5" />
+
+          <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+              <h2 class="featurette-heading fw-normal lh-1">
+                Tinder But for Dogs <br />
+                <span class="text-body-secondary">
+                  <a
+                    href="https://amerucandior.github.io/Tinder-For-Dogs/"
+                    target="_blank"
+                  >
+                    See for yourself.
+                  </a>
+                </span>
+              </h2>
+              <p class="lead">
+                Built with
+                <span>
+                  <img
+                    src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg"
+                    alt="Bootstrap"
+                    width="20"
+                    height="20"
+                    loading="lazy"
+                  />
+                </span>
+                Bootstrap,
+                <span>
+                  <img
+                    src="https://img.icons8.com/?size=100&id=zRvbzAjx4VWY&format=png&color=000000"
+                    alt="HTML"
+                    width="20"
+                    height="20"
+                    loading="lazy"
+                  />
+                </span>
+                HTML, and
+                <span>
+                  <img
+                    src="https://img.icons8.com/?size=100&id=11260&format=png&color=000000"
+                    alt="CSS"
+                    width="20"
+                    height="20"
+                    loading="lazy"
+                  />
+                </span>
+                vanilla CSS. One of the highlights of this project was
+                discovering and experimenting with gradient backgrounds—a
+                feature that not only enhanced the design but also expanded my
+                creative toolkit.
+              </p>
+            </div>
+
+            <div class="col-md-5 order-md-1">
+              <img
+                src="./Tin-Dog.png"
+                alt="Tin-Dog website image"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+
+          <hr class="featurette-divider m-5" />
+
+          <div class="row featurette">
+            <!-- Left column (text) -->
+            <div class="col-md-7">
+              <h2 class="featurette-heading fw-normal lh-1">Chess Board</h2>
+              <p class="lead">
+                I’ve always admired the strategic depth of chess, which inspired
+                me to recreate my chess.com chessboard. The journey was both
+                challenging and rewarding—far from easy, as it reinforced my
+                understanding of grids while giving me a fresh perspective on
+                both design and problem-solving.
+              </p>
+            </div>
+
+            <!-- Right column (chessboard) -->
+            <div
+              class="col-md-5 d-flex justify-content-center align-items-start"
+            >
+              <div class="chess-container">
+                <!-- 64 squares -->
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="featurette-divider m-5" />
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">The Kenyan Flag😎</h2>
+            <p class="lead">
+              I created my country’s flag as a foundational CSS exercise. It was
+              a rewarding experience that deepened my appreciation for the power
+              of pure CSS.
+            </p>
+          </div>
+          <div
+            class="col-md-5 d-flex justify-content-center align-items-center"
+          >
+            <div class="flag-container">
+              <div id="black"></div>
+              <div id="white"></div>
+              <div id="red"></div>
+              <div id="white2"></div>
+              <div id="green"></div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="featurette-divider m-5" />
+
+        <div class="row featurette">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading fw-normal lh-1">
+              Food-Truck Website <br />
+              <span class="text-body-secondary"
+                ><a href="#"> See for yourself.</a></span
+              >
+            </h2>
+            <p class="lead">
+              This website was built using
+              <span>
+                <img
+                  src="https://static.djangoproject.com/img/logos/django-logo-positive.svg"
+                  alt="django-logo"
+                  height="20"
+                  width="61"
+                />
+              </span>
+              ,
+              <span>
+                <img
+                  src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg"
+                  alt="Bootstrap"
+                  width="20"
+                  height="20"
+                  loading="lazy"
+                /> </span
+              >Bootstrap, and vanilla CSS. I chose Django for its robust
+              security features and its ability to integrate logic into the
+              application. It also supports location tracking, enabling users to
+              easily follow the food truck in real time.
+            </p>
+          </div>
+          <div class="col-md-5 order-md-1">
+            <img
+              src="./Top-Boy.png"
+              alt="Tin-Dog website image"
+              height="350"
+              width="auto"
+              class="img-fluid"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <hr class="featurette-divider m-5" />
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">
+              Portfolio Website <br />
+              <span class="text-body-secondary"
+                ><a href="https://amerucan.pythonanywhere.com/">
+                  See for yourself.</a
+                ></span
+              >
+            </h2>
+            <p class="lead">
+              This website was built using Flask, HTML, and vanilla CSS. It was
+              my first live deployment, created with a borrowed template that
+              inspired me to explore the art of building aesthetically pleasing
+              web designs.
+            </p>
+          </div>
+        </div>
+
+        <hr class="featurette-divider m-5" />
+      </div>
+    </section>
+
+    <!--Footer-->
+    <div class="container">
+      <footer
+        class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+      >
+        <p class="col-md-4 mb-0 text-body-secondary">© Ian Mwirigi</p>
+      </footer>
+    </div>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"
+  ></script>
+</html>
